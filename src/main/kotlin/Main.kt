@@ -1,3 +1,4 @@
+import kotlinx.coroutines.*
 import org.apache.commons.math3.random.*
 import org.apache.commons.rng.sampling.distribution.*
 import org.apache.commons.rng.simple.*
@@ -14,11 +15,29 @@ private fun threadLocalZigguratSampler(
     return ZigguratSampler.NormalizedGaussian.of(ThreadLocalRandomSource.current(source))
 }
 
+/**
+ * Parallel map.
+ *
+ * See https://jivimberg.io/blog/2018/05/04/parallel-map-in-kotlin/
+ **/
+suspend fun <A, B> Iterable<A>.parallelMap(f: suspend (A) -> B): List<B> = coroutineScope {
+    map { async { f(it) } }.awaitAll()
+}
+
+const val PARALLEL_MAP = false
+
 fun measure(name: String, repeat: Int, block: () -> Unit): Pair<String, Long> {
     print("$name... ")
     val elapsed = measureTimeMillis {
-        for (i in 1..repeat) {
-            block()
+        if (PARALLEL_MAP)
+            runBlocking {
+
+                (1..repeat).parallelMap { block() }
+            }
+        else {
+            for (i in 1..repeat) {
+                block()
+            }
         }
     }
     println("$elapsed ms")
@@ -36,8 +55,8 @@ fun Random.boxMullerGaussian(): Double {
     var x: Double
     var y: Double
     do {
-        x =this.nextDouble(-1.0, 1.0)
-        y =this.nextDouble(-1.0, 1.0)
+        x = this.nextDouble(-1.0, 1.0)
+        y = this.nextDouble(-1.0, 1.0)
         r = x * x + y * y
     } while (r >= 1 || r == 0.0)
     return x * sqrt(-2 * ln(r) / r)
@@ -54,7 +73,7 @@ fun mtGaussianBench() {
 
     for (trial in 0..5) {
 
-        val N = 10000000
+        val N = 1000000
 
         println()
         println("-".repeat(80))

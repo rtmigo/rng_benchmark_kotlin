@@ -14,6 +14,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
     implementation("org.apache.commons:commons-rng-simple:1.4")
     implementation("org.apache.commons:commons-rng-sampling:1.4")
     implementation( "org.apache.commons:commons-math3:3.6.1")
