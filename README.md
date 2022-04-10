@@ -72,6 +72,7 @@ JVM 11.0.14 Kotlin 1.6.20
 1470 ms reuse SynchronizedRandomGenerator( Well19937c() )
 2985 ms create java.util.Random() and call .nextGaussian()
 
+
 ================================================================================
 RESULTS SIX_LARGE_COROUTINES @ 2022-04-10T23:29:11.098844Z
 ================================================================================
