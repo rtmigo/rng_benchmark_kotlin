@@ -15,28 +15,68 @@ private fun threadLocalZigguratSampler(
     return ZigguratSampler.NormalizedGaussian.of(ThreadLocalRandomSource.current(source))
 }
 
-/**
- * Parallel map.
- *
- * See https://jivimberg.io/blog/2018/05/04/parallel-map-in-kotlin/
- **/
-suspend fun <A, B> Iterable<A>.parallelMap(f: suspend (A) -> B): List<B> = coroutineScope {
-    map { async { f(it) } }.awaitAll()
+enum class Mode {
+    SIX_SMALL_COROUTINES,
+    SIX_LARGE_COROUTINES,
+    SINGLE_THREAD
 }
 
-const val PARALLEL_MAP = false
+val mode = Mode.SINGLE_THREAD
 
-fun measure(name: String, repeat: Int, block: () -> Unit): Pair<String, Long> {
+fun measure(name: String, block: () -> Unit): Pair<String, Long> {
     print("$name... ")
     val elapsed = measureTimeMillis {
-        if (PARALLEL_MAP)
-            runBlocking {
+        when (mode) {
+            Mode.SIX_SMALL_COROUTINES -> {
+                val repeat = 100000
 
-                (1..repeat).parallelMap { block() }
+                runBlocking {
+                    for (i in 1..repeat) {
+                        val a = launch { block() }
+                        val b = launch { block() }
+                        val c = launch { block() }
+                        val d = launch { block() }
+                        val e = launch { block() }
+                        val f = launch { block() }
+
+                        a.join()
+                        b.join()
+                        c.join()
+                        d.join()
+                        e.join()
+                        f.join()
+                    }
+                }
             }
-        else {
-            for (i in 1..repeat) {
-                block()
+            Mode.SIX_LARGE_COROUTINES -> {
+                runBlocking {
+                    val repeat = 1000000
+                    fun runme() {
+                        for (i in 1..repeat)
+                            block()
+                    }
+
+                    val a = launch { runme() }
+                    val b = launch { runme() }
+                    val c = launch { runme() }
+                    val d = launch { runme() }
+                    val e = launch { runme() }
+                    val f = launch { runme() }
+
+                    a.join()
+                    b.join()
+                    c.join()
+                    d.join()
+                    e.join()
+                    f.join()
+
+                }
+            }
+            Mode.SINGLE_THREAD -> {
+                val repeat = 10000000
+                for (i in 1..repeat) {
+                    block()
+                }
             }
         }
     }
@@ -71,31 +111,29 @@ fun mtGaussianBench() {
 
     fun Pair<String, Long>.rmbr() = results.add(this)
 
-    for (trial in 0..5) {
-
-        val N = 1000000
+    for (trial in 1..3) {
 
         println()
         println("-".repeat(80))
         println()
 
-        measure("create java.util.Random() and call .nextGaussian()", N) {
+        measure("create java.util.Random() and call .nextGaussian()") {
             java.util.Random().nextGaussian()
         }.rmbr()
 
         val javaUtilRandom = java.util.Random()
 
-        measure("synchronized reuse of java.util.Random and call .nextGaussian()", N) {
+        measure("synchronized reuse of java.util.Random and call .nextGaussian()") {
             synchronized(javaUtilRandom) {
                 javaUtilRandom.nextGaussian()
             }
         }.rmbr()
 
-        measure("kotlin.random.Random.boxMullerGaussian()", N) {
+        measure("kotlin.random.Random.boxMullerGaussian()") {
             kotlin.random.Random.boxMullerGaussian()
         }.rmbr()
 
-        measure("ThreadLocalRandom.current().nextGaussian()", N) {
+        measure("ThreadLocalRandom.current().nextGaussian()") {
 
             ThreadLocalRandom.current().nextGaussian()
         }.rmbr()
@@ -103,7 +141,7 @@ fun mtGaussianBench() {
 
         for (src in RandomSource.values()) {
             try {
-                measure("ZigguratSampler.sample() for ThreadLocalRandomSource $src", N) {
+                measure("ZigguratSampler.sample() for ThreadLocalRandomSource $src") {
                     threadLocalZigguratSampler(src).sample()
                 }.rmbr()
             } catch (e: Throwable) {
@@ -113,13 +151,13 @@ fun mtGaussianBench() {
 
         val syncWell = SynchronizedRandomGenerator(Well19937c())
 
-        measure("reuse SynchronizedRandomGenerator( Well19937c() )", N) {
+        measure("reuse SynchronizedRandomGenerator( Well19937c() )") {
             syncWell.nextGaussian()
         }.rmbr()
 
         val syncMt = SynchronizedRandomGenerator(MersenneTwister())
 
-        measure("reuse SynchronizedRandomGenerator( MersenneTwister() )", N) {
+        measure("reuse SynchronizedRandomGenerator( MersenneTwister() )") {
             syncMt.nextGaussian()
         }.rmbr()
 
@@ -127,7 +165,7 @@ fun mtGaussianBench() {
 
     println()
     println("=".repeat(80))
-    println("RESULTS (${Instant.now()})")
+    println("RESULTS $mode @ ${Instant.now()}")
     println("=".repeat(80))
     println("JVM ${System.getProperty("java.version")} Kotlin ${KotlinVersion.CURRENT}")
     println()

@@ -11,131 +11,181 @@ See source for details.
 
 # Results
 
-single thread
-
 (on Intel© Core™ i7-8700K CPU @ 3.70GHz × 6, Linux 5.13.0-27-generic)
 
 ```text
 ================================================================================
-RESULTS (2022-04-10T22:23:43.193350Z)
+RESULTS SINGLE_THREAD @ 2022-04-10T23:31:01.621449Z
 ================================================================================
 JVM 11.0.14 Kotlin 1.6.20
 
-989 ms ZigguratSampler.sample() for ThreadLocalRandomSource MSWS
-1012 ms ZigguratSampler.sample() for ThreadLocalRandomSource SPLIT_MIX_64
-1068 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_PLUS
-1073 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_PLUS
-1076 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_SS
-1083 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_SS
-1083 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_RXS_M_XS_64_OS
-1084 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_RXS_M_XS_64
-1086 ms ZigguratSampler.sample() for ThreadLocalRandomSource SFC_64
-1086 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_PP
-1099 ms ZigguratSampler.sample() for ThreadLocalRandomSource TWO_CMRES
-1102 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_PP
-1111 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_PLUS
-1112 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_PP
-1113 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_SS
-1113 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_S
-1123 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_PP
-1130 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_SS
-1133 ms ZigguratSampler.sample() for ThreadLocalRandomSource JSF_64
-1146 ms ZigguratSampler.sample() for ThreadLocalRandomSource XOR_SHIFT_1024_S_PHI
-1156 ms ZigguratSampler.sample() for ThreadLocalRandomSource XOR_SHIFT_1024_S
-1167 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_64_S
-1189 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RR_32
-1190 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_PLUS
-1195 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RS_32
-1200 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_MCG_XSH_RS_32
-1211 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RR_32_OS
-1212 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RS_32_OS
-1213 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_MCG_XSH_RR_32
-1213 ms ZigguratSampler.sample() for ThreadLocalRandomSource JSF_32
-1215 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_64_SS
-1228 ms ZigguratSampler.sample() for ThreadLocalRandomSource SFC_32
-1240 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_SS
-1244 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_PP
-1250 ms ZigguratSampler.sample() for ThreadLocalRandomSource MT_64
-1287 ms ZigguratSampler.sample() for ThreadLocalRandomSource KISS
-1307 ms ZigguratSampler.sample() for ThreadLocalRandomSource MWC_256
-1340 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_512_A
-1370 ms ZigguratSampler.sample() for ThreadLocalRandomSource MT
-1484 ms ZigguratSampler.sample() for ThreadLocalRandomSource ISAAC
-1607 ms ZigguratSampler.sample() for ThreadLocalRandomSource JDK
-1658 ms kotlin.random.Random.boxMullerGaussian()
-1683 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_1024_A
-1835 ms ThreadLocalRandom.current().nextGaussian()
-1870 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_19937_C
-1905 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_19937_A
-1915 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_44497_A
-1915 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_44497_B
-2611 ms reuse SynchronizedRandomGenerator( MersenneTwister() )
-2694 ms synchronized reuse of java.util.Random and call .nextGaussian()
-2923 ms reuse SynchronizedRandomGenerator( Well19937c() )
-6032 ms create java.util.Random() and call .nextGaussian()
-```
+481 ms ZigguratSampler.sample() for ThreadLocalRandomSource MSWS
+491 ms ZigguratSampler.sample() for ThreadLocalRandomSource SPLIT_MIX_64
+534 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_PLUS
+537 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_PLUS
+537 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_PP
+538 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_PP
+543 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_SS
+544 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_RXS_M_XS_64
+544 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_RXS_M_XS_64_OS
+547 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_SS
+553 ms ZigguratSampler.sample() for ThreadLocalRandomSource SFC_64
+556 ms ZigguratSampler.sample() for ThreadLocalRandomSource JSF_64
+561 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_SS
+564 ms ZigguratSampler.sample() for ThreadLocalRandomSource XOR_SHIFT_1024_S_PHI
+564 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_PLUS
+567 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_PP
+567 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_PP
+568 ms ZigguratSampler.sample() for ThreadLocalRandomSource XOR_SHIFT_1024_S
+570 ms ZigguratSampler.sample() for ThreadLocalRandomSource TWO_CMRES
+570 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_S
+578 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_SS
+589 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_64_SS
+591 ms ZigguratSampler.sample() for ThreadLocalRandomSource JSF_32
+592 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_64_S
+600 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_PLUS
+601 ms ZigguratSampler.sample() for ThreadLocalRandomSource SFC_32
+601 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RR_32_OS
+602 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_MCG_XSH_RR_32
+602 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_MCG_XSH_RS_32
+603 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RR_32
+603 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RS_32
+603 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RS_32_OS
+607 ms ZigguratSampler.sample() for ThreadLocalRandomSource MT_64
+613 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_PP
+619 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_SS
+649 ms ZigguratSampler.sample() for ThreadLocalRandomSource KISS
+651 ms ZigguratSampler.sample() for ThreadLocalRandomSource MWC_256
+669 ms ZigguratSampler.sample() for ThreadLocalRandomSource MT
+746 ms ZigguratSampler.sample() for ThreadLocalRandomSource ISAAC
+761 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_512_A
+778 ms ZigguratSampler.sample() for ThreadLocalRandomSource JDK
+840 ms kotlin.random.Random.boxMullerGaussian()
+850 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_1024_A
+927 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_19937_C
+939 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_19937_A
+950 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_44497_B
+953 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_44497_A
+955 ms ThreadLocalRandom.current().nextGaussian()
+1311 ms reuse SynchronizedRandomGenerator( MersenneTwister() )
+1385 ms synchronized reuse of java.util.Random and call .nextGaussian()
+1470 ms reuse SynchronizedRandomGenerator( Well19937c() )
+2985 ms create java.util.Random() and call .nextGaussian()
 
-# Results
-with [parallel map](https://jivimberg.io/blog/2018/05/04/parallel-map-in-kotlin/)
-
-(on Intel© Core™ i7-8700K CPU @ 3.70GHz × 6, Linux 5.13.0-27-generic)
-
-```
 ================================================================================
-RESULTS (2022-04-10T22:38:32.817243Z)
+RESULTS SIX_LARGE_COROUTINES @ 2022-04-10T23:29:11.098844Z
 ================================================================================
 JVM 11.0.14 Kotlin 1.6.20
 
-4004 ms ZigguratSampler.sample() for ThreadLocalRandomSource MT_64
-4143 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_SS
-4235 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_19937_C
-4264 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_19937_A
-4282 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_S
-4290 ms ZigguratSampler.sample() for ThreadLocalRandomSource ISAAC
-4406 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_PP
-4428 ms ZigguratSampler.sample() for ThreadLocalRandomSource MWC_256
-4433 ms synchronized reuse of java.util.Random and call .nextGaussian()
-4437 ms ZigguratSampler.sample() for ThreadLocalRandomSource XOR_SHIFT_1024_S
-4437 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_64_SS
-4467 ms reuse SynchronizedRandomGenerator( Well19937c() )
-4497 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RS_32
-4508 ms ZigguratSampler.sample() for ThreadLocalRandomSource XOR_SHIFT_1024_S_PHI
-4524 ms ZigguratSampler.sample() for ThreadLocalRandomSource MSWS
-4528 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_RXS_M_XS_64_OS
-4529 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_1024_A
-4530 ms ZigguratSampler.sample() for ThreadLocalRandomSource MT
-4540 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_PP
-4554 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RS_32_OS
-4582 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_PP
-4607 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_SS
-4616 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RR_32
-4636 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_44497_B
-4638 ms ZigguratSampler.sample() for ThreadLocalRandomSource JSF_32
-4645 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_PLUS
-4648 ms ZigguratSampler.sample() for ThreadLocalRandomSource SFC_32
-4669 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_PLUS
-4686 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RR_32_OS
-4692 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_SS
-4749 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_RXS_M_XS_64
-4880 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_PLUS
-4898 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_PP
-4901 ms ZigguratSampler.sample() for ThreadLocalRandomSource JSF_64
-4910 ms ZigguratSampler.sample() for ThreadLocalRandomSource JDK
-4910 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_44497_A
-4933 ms ThreadLocalRandom.current().nextGaussian()
-4982 ms kotlin.random.Random.boxMullerGaussian()
-4988 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_PP
-4995 ms ZigguratSampler.sample() for ThreadLocalRandomSource SFC_64
-5006 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_SS
-5016 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_MCG_XSH_RS_32
-5018 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_512_A
-5032 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_MCG_XSH_RR_32
-5039 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_64_S
-5097 ms ZigguratSampler.sample() for ThreadLocalRandomSource KISS
-5114 ms reuse SynchronizedRandomGenerator( MersenneTwister() )
-5140 ms ZigguratSampler.sample() for ThreadLocalRandomSource SPLIT_MIX_64
-5233 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_PLUS
-5260 ms ZigguratSampler.sample() for ThreadLocalRandomSource TWO_CMRES
-5321 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_SS
-5663 ms create java.util.Random() and call .nextGaussian()
+284 ms ZigguratSampler.sample() for ThreadLocalRandomSource MSWS
+294 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_PLUS
+298 ms ZigguratSampler.sample() for ThreadLocalRandomSource SPLIT_MIX_64
+298 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_PP
+302 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_SS
+302 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_PLUS
+304 ms ZigguratSampler.sample() for ThreadLocalRandomSource SFC_64
+305 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_PP
+307 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_SS
+307 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_RXS_M_XS_64
+308 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_RXS_M_XS_64_OS
+310 ms ZigguratSampler.sample() for ThreadLocalRandomSource JSF_64
+311 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_S
+312 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_PP
+316 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_SS
+318 ms ZigguratSampler.sample() for ThreadLocalRandomSource TWO_CMRES
+320 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_PLUS
+321 ms ZigguratSampler.sample() for ThreadLocalRandomSource XOR_SHIFT_1024_S
+321 ms ZigguratSampler.sample() for ThreadLocalRandomSource XOR_SHIFT_1024_S_PHI
+322 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_PP
+327 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_SS
+342 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_64_S
+343 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_64_SS
+344 ms ZigguratSampler.sample() for ThreadLocalRandomSource MT_64
+345 ms ZigguratSampler.sample() for ThreadLocalRandomSource JSF_32
+346 ms ZigguratSampler.sample() for ThreadLocalRandomSource SFC_32
+348 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_MCG_XSH_RS_32
+350 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RR_32_OS
+351 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RR_32
+353 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_PLUS
+354 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_PP
+354 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RS_32_OS
+355 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_MCG_XSH_RR_32
+358 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_SS
+363 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RS_32
+376 ms ZigguratSampler.sample() for ThreadLocalRandomSource KISS
+384 ms ZigguratSampler.sample() for ThreadLocalRandomSource MWC_256
+438 ms ZigguratSampler.sample() for ThreadLocalRandomSource MT
+465 ms ZigguratSampler.sample() for ThreadLocalRandomSource ISAAC
+472 ms ZigguratSampler.sample() for ThreadLocalRandomSource JDK
+486 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_512_A
+497 ms kotlin.random.Random.boxMullerGaussian()
+518 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_1024_A
+556 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_19937_A
+579 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_44497_A
+590 ms ThreadLocalRandom.current().nextGaussian()
+594 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_44497_B
+660 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_19937_C
+805 ms reuse SynchronizedRandomGenerator( MersenneTwister() )
+837 ms synchronized reuse of java.util.Random and call .nextGaussian()
+899 ms reuse SynchronizedRandomGenerator( Well19937c() )
+1883 ms create java.util.Random() and call .nextGaussian()
+
+
+================================================================================
+RESULTS SIX_SMALL_COROUTINES @ 2022-04-10T23:24:03.666073Z
+================================================================================
+JVM 11.0.14 Kotlin 1.6.20
+
+680 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_PP
+681 ms ZigguratSampler.sample() for ThreadLocalRandomSource SPLIT_MIX_64
+682 ms ZigguratSampler.sample() for ThreadLocalRandomSource XOR_SHIFT_1024_S_PHI
+682 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_PLUS
+683 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_RXS_M_XS_64
+683 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_RXS_M_XS_64_OS
+684 ms ZigguratSampler.sample() for ThreadLocalRandomSource SFC_64
+685 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_SS
+685 ms ZigguratSampler.sample() for ThreadLocalRandomSource JSF_32
+686 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_128_SS
+686 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_PLUS
+686 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_PP
+686 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RR_32_OS
+687 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_64_S
+688 ms ZigguratSampler.sample() for ThreadLocalRandomSource MSWS
+688 ms ZigguratSampler.sample() for ThreadLocalRandomSource SFC_32
+688 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_SS
+689 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RR_32
+689 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_256_PP
+690 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_PLUS
+690 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_SS
+690 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_512_PP
+690 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RS_32_OS
+691 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_PLUS
+691 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_PP
+692 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_SHI_RO_128_SS
+692 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_XSH_RS_32
+692 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_MCG_XSH_RS_32
+692 ms ZigguratSampler.sample() for ThreadLocalRandomSource JSF_64
+693 ms ZigguratSampler.sample() for ThreadLocalRandomSource PCG_MCG_XSH_RR_32
+693 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_1024_S
+694 ms ZigguratSampler.sample() for ThreadLocalRandomSource MT
+694 ms ZigguratSampler.sample() for ThreadLocalRandomSource XOR_SHIFT_1024_S
+694 ms ZigguratSampler.sample() for ThreadLocalRandomSource MWC_256
+695 ms ZigguratSampler.sample() for ThreadLocalRandomSource TWO_CMRES
+696 ms ZigguratSampler.sample() for ThreadLocalRandomSource ISAAC
+696 ms ZigguratSampler.sample() for ThreadLocalRandomSource KISS
+696 ms ZigguratSampler.sample() for ThreadLocalRandomSource XO_RO_SHI_RO_64_SS
+701 ms kotlin.random.Random.boxMullerGaussian()
+708 ms ThreadLocalRandom.current().nextGaussian()
+710 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_19937_C
+711 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_19937_A
+712 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_44497_B
+713 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_44497_A
+721 ms ZigguratSampler.sample() for ThreadLocalRandomSource JDK
+742 ms reuse SynchronizedRandomGenerator( MersenneTwister() )
+744 ms ZigguratSampler.sample() for ThreadLocalRandomSource MT_64
+746 ms synchronized reuse of java.util.Random and call .nextGaussian()
+754 ms reuse SynchronizedRandomGenerator( Well19937c() )
+759 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_1024_A
+762 ms ZigguratSampler.sample() for ThreadLocalRandomSource WELL_512_A
+1023 ms create java.util.Random() and call .nextGaussian()
 ```
