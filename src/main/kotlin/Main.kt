@@ -80,7 +80,7 @@ fun mtGaussianBench() {
 
     println()
     println("=".repeat(80))
-    println(" RESULTS (${Instant.now()})")
+    println("RESULTS (${Instant.now()})")
     println("=".repeat(80))
     println("JVM ${System.getProperty("java.version")} Kotlin ${KotlinVersion.CURRENT}")
     println()
