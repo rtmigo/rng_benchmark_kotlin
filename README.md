@@ -6,6 +6,10 @@ Comparing:
 - getting  `org.apache.commons.rng.simple.ThreadLocalRandomSource.current(...)` and creating a new `ZigguratSampler` each time
 - reusing `org.apache.commons.math3.random.SynchronizedRandomGenerator`
 
+See source for details.
+
+The standard Kotlin generator has not been tested because there is no obvious library way for it to generate a normally distributed value.
+
 # Results
 
 (on Intel© Core™ i7-8700K CPU @ 3.70GHz × 6, Linux 5.13.0-27-generic)
