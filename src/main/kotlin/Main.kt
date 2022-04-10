@@ -4,13 +4,14 @@ import org.apache.commons.rng.simple.*
 import java.time.Instant
 
 import java.util.concurrent.ThreadLocalRandom
+import kotlin.math.*
+import kotlin.random.Random
 import kotlin.system.measureTimeMillis
 
 private fun threadLocalZigguratSampler(
     source: RandomSource = RandomSource.WELL_19937_C,
 ): NormalizedGaussianSampler {
-    val rng = ThreadLocalRandomSource.current(source)
-    return ZigguratSampler.NormalizedGaussian.of(rng)
+    return ZigguratSampler.NormalizedGaussian.of(ThreadLocalRandomSource.current(source))
 }
 
 fun measure(name: String, repeat: Int, block: () -> Unit): Pair<String, Long> {
@@ -24,6 +25,27 @@ fun measure(name: String, repeat: Int, block: () -> Unit): Pair<String, Long> {
     return Pair(name, elapsed)
 }
 
+fun Random.boxMullerGaussian(): Double {
+    // made from
+    // http://www.java2s.com/example/java-utility-method/gaussian/gaussian-973fd.html
+    // use the polar form of the Box-Muller transform
+    //
+    // (not tested, made for benchmark only)
+
+    var r: Double
+    var x: Double
+    var y: Double
+    do {
+        x =this.nextDouble(-1.0, 1.0)
+        y =this.nextDouble(-1.0, 1.0)
+        r = x * x + y * y
+    } while (r >= 1 || r == 0.0)
+    return x * sqrt(-2 * ln(r) / r)
+
+    // Remark:  y * Math.sqrt(-2 * Math.log(r) / r)
+    // is an independent random gaussian
+}
+
 fun mtGaussianBench() {
 
     val results = mutableListOf<Pair<String, Long>>()
@@ -32,31 +54,37 @@ fun mtGaussianBench() {
 
     for (trial in 0..5) {
 
-        val N = 100000000
+        val N = 10000000
 
         println()
         println("-".repeat(80))
         println()
 
-        measure("creating java.util.Random() and calling .nextGaussian()", N) {
+        measure("create java.util.Random() and call .nextGaussian()", N) {
             java.util.Random().nextGaussian()
         }.rmbr()
 
         val javaUtilRandom = java.util.Random()
 
-        measure("synchronized reuse of java.util.Random and calling .nextGaussian()", N) {
+        measure("synchronized reuse of java.util.Random and call .nextGaussian()", N) {
             synchronized(javaUtilRandom) {
                 javaUtilRandom.nextGaussian()
             }
         }.rmbr()
 
+        measure("kotlin.random.Random.boxMullerGaussian()", N) {
+            kotlin.random.Random.boxMullerGaussian()
+        }.rmbr()
+
         measure("ThreadLocalRandom.current().nextGaussian()", N) {
+
             ThreadLocalRandom.current().nextGaussian()
         }.rmbr()
 
+
         for (src in RandomSource.values()) {
             try {
-                measure("threadLocalZigguratSampler($src).sample()", N) {
+                measure("ZigguratSampler.sample() for ThreadLocalRandomSource $src", N) {
                     threadLocalZigguratSampler(src).sample()
                 }.rmbr()
             } catch (e: Throwable) {
@@ -66,13 +94,13 @@ fun mtGaussianBench() {
 
         val syncWell = SynchronizedRandomGenerator(Well19937c())
 
-        measure("reuse SynchronizedRandomGenerator(Well19937c())", N) {
+        measure("reuse SynchronizedRandomGenerator( Well19937c() )", N) {
             syncWell.nextGaussian()
         }.rmbr()
 
         val syncMt = SynchronizedRandomGenerator(MersenneTwister())
 
-        measure("reuse SynchronizedRandomGenerator(MersenneTwister())", N) {
+        measure("reuse SynchronizedRandomGenerator( MersenneTwister() )", N) {
             syncMt.nextGaussian()
         }.rmbr()
 
