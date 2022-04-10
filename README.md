@@ -1,4 +1,4 @@
-Benchmarking thread-safe ways to get a single normalized gaussian value in Kotlin/JVM.
+Benchmarking thread-safe ways to get a single random normalized gaussian value in Kotlin/JVM.
 
 Comparing:
 - `java.util.Random()` (creating new instance each time)
@@ -63,9 +63,9 @@ JVM 11.0.14 Kotlin 1.6.20
 18085 ms ThreadLocalRandom.current().nextGaussian()
 18332 ms threadLocalZigguratSampler(WELL_44497_A).sample()
 19204 ms threadLocalZigguratSampler(WELL_44497_B).sample()
-25089 ms reusing SynchronizedRandomGenerator(MersenneTwister())
-26643 ms synchronized reusing of java.util.Random and calling .nextGaussian()
-28741 ms reusing SynchronizedRandomGenerator(Well19937c())
+25089 ms reuse SynchronizedRandomGenerator(MersenneTwister())
+26643 ms synchronized reuse of java.util.Random and calling .nextGaussian()
+28741 ms reuse SynchronizedRandomGenerator(Well19937c())
 58953 ms creating java.util.Random() and calling .nextGaussian()
 ```
  

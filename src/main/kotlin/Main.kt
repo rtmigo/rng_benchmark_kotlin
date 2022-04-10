@@ -44,7 +44,7 @@ fun mtGaussianBench() {
 
         val javaUtilRandom = java.util.Random()
 
-        measure("synchronized reusing of java.util.Random and calling .nextGaussian()", N) {
+        measure("synchronized reuse of java.util.Random and calling .nextGaussian()", N) {
             synchronized(javaUtilRandom) {
                 javaUtilRandom.nextGaussian()
             }
@@ -66,13 +66,13 @@ fun mtGaussianBench() {
 
         val syncWell = SynchronizedRandomGenerator(Well19937c())
 
-        measure("reusing SynchronizedRandomGenerator(Well19937c())", N) {
+        measure("reuse SynchronizedRandomGenerator(Well19937c())", N) {
             syncWell.nextGaussian()
         }.rmbr()
 
         val syncMt = SynchronizedRandomGenerator(MersenneTwister())
 
-        measure("reusing SynchronizedRandomGenerator(MersenneTwister())", N) {
+        measure("reuse SynchronizedRandomGenerator(MersenneTwister())", N) {
             syncMt.nextGaussian()
         }.rmbr()
 
