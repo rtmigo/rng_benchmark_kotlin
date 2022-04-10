@@ -1,4 +1,4 @@
-Benchmarking thread-safe ways to get a single random normalized gaussian value in Kotlin/JVM.
+Benchmarking thread-safe ways to generate a single random normalized gaussian value in Kotlin/JVM.
 
 Comparing:
 - `java.util.Random()` (creating new instance each time)
