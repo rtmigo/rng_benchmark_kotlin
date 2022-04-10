@@ -27,10 +27,9 @@ fun measure(name: String, block: () -> Unit): Pair<String, Long> {
     print("$name... ")
     val elapsed = measureTimeMillis {
         when (mode) {
-            Mode.SIX_SMALL_COROUTINES -> {
-                val repeat = 100000
-
+            Mode.SIX_SMALL_COROUTINES ->
                 runBlocking {
+                    val repeat = 100_000
                     for (i in 1..repeat) {
                         val a = launch { block() }
                         val b = launch { block() }
@@ -47,10 +46,10 @@ fun measure(name: String, block: () -> Unit): Pair<String, Long> {
                         f.join()
                     }
                 }
-            }
-            Mode.SIX_LARGE_COROUTINES -> {
+
+            Mode.SIX_LARGE_COROUTINES ->
                 runBlocking {
-                    val repeat = 1000000
+                    val repeat = 1_000_000
                     fun runme() {
                         for (i in 1..repeat)
                             block()
@@ -69,11 +68,10 @@ fun measure(name: String, block: () -> Unit): Pair<String, Long> {
                     d.join()
                     e.join()
                     f.join()
-
                 }
-            }
+
             Mode.SINGLE_THREAD -> {
-                val repeat = 10000000
+                val repeat = 10_000_000
                 for (i in 1..repeat) {
                     block()
                 }
