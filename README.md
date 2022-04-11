@@ -11,7 +11,15 @@ Comparing:
   - **[D2]** with Box–Muller transform extension 
 - **[E]** reusing `org.apache.commons.math3.random.SynchronizedRandomGenerator`
 
-See source for details.
+See [source](https://github.com/rtmigo/rng_benchmark_kt/blob/dev/src/main/kotlin/Main.kt) for details.
+
+- SINGLE_THREAD: Accessing thread-safe generator from single thread
+
+- LARGE_COROUTINES: Starting six coroutines in parallel and generating many
+  samples in each of them
+ 
+- SMALL_COROUTINES: Starting and stopping parallel coroutines multiple times to
+  generate single samples in each of them
 
 # Results
 
