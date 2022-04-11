@@ -15,7 +15,9 @@ See source for details.
 
 # Results
 
-(on Intel© Core™ i7-8700K CPU @ 3.70GHz × 6, Linux 5.13.0-27-generic)
+on Intel© Core™ i7-8700K CPU @ 3.70GHz × 6, Linux 5.13.0-27-generic
+
+`ms` is milliseconds, lower time is better
 
 ```text
 ================================================================================
