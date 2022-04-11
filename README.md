@@ -4,7 +4,9 @@ Comparing:
 - `java.util.Random().nextGaussian()` (creating new `Random` instance each time)
 - `java.util.concurrent.ThreadLocalRandom.current().nextGaussian()` 
 - using [Box–Muller transform](http://www.java2s.com/example/java-utility-method/gaussian/gaussian-973fd.html) with `kotlin.math.Random.nextDouble(...)`
-- getting  `org.apache.commons.rng.simple.ThreadLocalRandomSource.current(...)` and creating a new `ZigguratSampler` each time
+- getting  `org.apache.commons.rng.simple.ThreadLocalRandomSource.current(...)`
+  - and creating a new `ZigguratSampler` each time
+  - and applying Box–Muller transform 
 - reusing `org.apache.commons.math3.random.SynchronizedRandomGenerator`
 
 See source for details.
