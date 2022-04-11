@@ -217,8 +217,8 @@ fun mtGaussianBench(mode: Mode): String {
 fun main(args: Array<String>) {
     val results = listOf<String>(
         mtGaussianBench(Mode.SINGLE_THREAD),
-        mtGaussianBench(Mode.SIX_SMALL_COROUTINES),
         mtGaussianBench(Mode.SIX_LARGE_COROUTINES),
+        mtGaussianBench(Mode.SIX_SMALL_COROUTINES),
     )
     println("=".repeat(80))
     println("=".repeat(80))
