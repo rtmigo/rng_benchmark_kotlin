@@ -131,37 +131,40 @@ fun mtGaussianBench(mode: Mode): String {
 
     fun Pair<String, Long>.rmbr() = results.add(this)
 
-    for (trial in 1..5) {
+    for (trial in 1..7) {
 
         println()
         println("-".repeat(80))
+        println("$mode / $trial")
+        println("-".repeat(80))
         println()
 
-        measure("create java.util.Random() and call .nextGaussian()", mode) {
+        measure("[A1] java.util.Random: create for each call", mode) {
             java.util.Random().nextGaussian()
         }.rmbr()
 
         val javaUtilRandom = java.util.Random()
 
-        measure("synchronized reuse of java.util.Random and call .nextGaussian()", mode) {
+        measure("[A2] java.util.Random: synchronized reuse", mode) {
             synchronized(javaUtilRandom) {
                 javaUtilRandom.nextGaussian()
             }
         }.rmbr()
 
-        measure("kotlin.random.Random.boxMullerGaussian()", mode) {
+        measure("[B] ThreadLocalRandom.current().nextGaussian()", mode) {
+            java.util.concurrent.ThreadLocalRandom.current().nextGaussian()
+        }.rmbr()
+
+
+        measure("[C] kotlin.random.Random.boxMullerGaussian()", mode) {
             kotlin.random.Random.boxMullerGaussian()
         }.rmbr()
 
-        measure("ThreadLocalRandom.current().nextGaussian()", mode) {
-
-            ThreadLocalRandom.current().nextGaussian()
-        }.rmbr()
 
 
         for (src in RandomSource.values()) {
             try {
-                measure("ZigguratSampler.sample() for ThreadLocalRandomSource $src", mode) {
+                measure("[D1] ZigguratSampler ThreadLocalRandomSource $src", mode) {
                     threadLocalZigguratSampler(src).sample()
                 }.rmbr()
             } catch (e: Throwable) {
@@ -171,7 +174,7 @@ fun mtGaussianBench(mode: Mode): String {
 
         for (src in RandomSource.values()) {
             try {
-                measure(".boxMullerGaussian() for ThreadLocalRandomSource $src", mode) {
+                measure("[D2] boxMullerGaussian() ThreadLocalRandomSource $src", mode) {
                     ThreadLocalRandomSource.current(src).boxMullerGaussian()
                 }.rmbr()
             } catch (e: Throwable) {
@@ -182,13 +185,13 @@ fun mtGaussianBench(mode: Mode): String {
 
         val syncWell = SynchronizedRandomGenerator(Well19937c())
 
-        measure("reuse SynchronizedRandomGenerator( Well19937c() )", mode) {
+        measure("[E] SynchronizedRandomGenerator Well19937c", mode) {
             syncWell.nextGaussian()
         }.rmbr()
 
         val syncMt = SynchronizedRandomGenerator(MersenneTwister())
 
-        measure("reuse SynchronizedRandomGenerator( MersenneTwister() )", mode) {
+        measure("[E] SynchronizedRandomGenerator MersenneTwister", mode) {
             syncMt.nextGaussian()
         }.rmbr()
 
