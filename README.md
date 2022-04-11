@@ -1,12 +1,14 @@
 Benchmarking thread-safe ways to generate a single random normalized gaussian value in Kotlin/JVM.
 
 Comparing:
-- `java.util.Random().nextGaussian()` (creating new `Random` instance each time)
+- `java.util.Random().nextGaussian()`
+  - creating new `Random` object instance for each call
+  - reusing `Random` in `synchronous` block
 - `java.util.concurrent.ThreadLocalRandom.current().nextGaussian()` 
-- using [Box–Muller transform](http://www.java2s.com/example/java-utility-method/gaussian/gaussian-973fd.html) with `kotlin.math.Random.nextDouble(...)`
-- getting  `org.apache.commons.rng.simple.ThreadLocalRandomSource.current(...)`
-  - and creating a new `ZigguratSampler` each time
-  - and applying Box–Muller transform 
+- `kotlin.math.Random.nextDouble(...)` with [Box–Muller transform](http://www.java2s.com/example/java-utility-method/gaussian/gaussian-973fd.html) extension 
+- `org.apache.commons.rng.simple.ThreadLocalRandomSource.current(...)`
+  - with new `ZigguratSampler` instance for each call
+  - with Box–Muller transform extension 
 - reusing `org.apache.commons.math3.random.SynchronizedRandomGenerator`
 
 See source for details.
