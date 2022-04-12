@@ -27,7 +27,8 @@ fun Collection<Double>.median(): Double {
 
     return if (sorted.size % 2 == 0) {
         ((sorted[sorted.size / 2] + sorted[sorted.size / 2 - 1]) / 2)
-    } else {
+    }
+    else {
         (sorted[sorted.size / 2])
     }
 }
@@ -122,7 +123,7 @@ internal fun threadsafeGaussianBenchmark(mode: Mode): String {
     val results = mutableListOf<Pair<String, Long>>()
     fun Pair<String, Long>.addToResults() = results.add(this)
 
-    for (trial in 1..5) {
+    for (trial in 1..7) {
 
         println()
         println("-".repeat(80))
@@ -207,11 +208,19 @@ internal fun threadsafeGaussianBenchmark(mode: Mode): String {
         "JVM ${System.getProperty("java.version")} Kotlin ${KotlinVersion.CURRENT}",
         ""))
 
-    reportTextLines.addAll(
+    val descToTime =
         results.groupBy { it.first }
-            .map { it.key to it.value.map {pair -> pair.second.toDouble() }.median().roundToInt() }
+            .map { it.key to it.value.sumOf { pair -> pair.second } }
             .sortedBy { it.second }
-            .map { "${it.second} ms ${it.first}" }
+
+
+    reportTextLines.addAll(
+        descToTime.map {
+            val time = it.second
+            val pctTime = (time*100.0/descToTime.first().second)
+            val description = it.first
+            "${"%.2f".format(pctTime)}% $description"
+        }
     )
 
     val reportText = reportTextLines.joinToString("\n")
@@ -221,7 +230,7 @@ internal fun threadsafeGaussianBenchmark(mode: Mode): String {
 
 fun main(args: Array<String>) {
 
-    //val modes = listOf(Mode.SINGLE_THREAD)
+    //val modes = listOf(Mode.SMALL_COROUTINES)
     val modes = Mode.values()
 
     modes.map(::threadsafeGaussianBenchmark).let {
