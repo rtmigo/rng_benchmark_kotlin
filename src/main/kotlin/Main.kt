@@ -21,31 +21,33 @@ enum class Mode {
 
 const val DIVISOR = 1 // normally 1, larger values to debug
 
+fun Collection<Double>.median(): Double {
+    // https://gist.github.com/fikrirazzaq/c3818a1c34e2787aef63ed4da56045a6?permalink_comment_id=4090312#gistcomment-4090312
+    val sorted = this.sorted()
+
+    return if (sorted.size % 2 == 0) {
+        ((sorted[sorted.size / 2] + sorted[sorted.size / 2 - 1]) / 2)
+    } else {
+        (sorted[sorted.size / 2])
+    }
+}
+
+suspend fun runParallel(n: Int, block: () -> Unit) =
+    coroutineScope {
+        (1..n).map { launch(start = CoroutineStart.LAZY) { block() } }.joinAll()
+    }
+
+
 fun measure(name: String, mode: Mode, block: () -> Unit): Pair<String, Long> {
     print("$name... ")
     return measureTimeMillis {
         when (mode) {
             Mode.SMALL_COROUTINES ->
-                runBlocking {
+                runBlocking(Dispatchers.Default) {
                     // starting/stopping many small tasks in parallel
-                    val repeat: Int = 100_000 / DIVISOR
+                    val repeat: Int = 10_000 / DIVISOR
                     for (i in 1..repeat) {
-                        // using local variables to avoid creating
-                        // collections in benchmark code
-
-                        val a = launch { block() }
-                        val b = launch { block() }
-                        val c = launch { block() }
-                        val d = launch { block() }
-                        val e = launch { block() }
-                        val f = launch { block() }
-
-                        a.join()
-                        b.join()
-                        c.join()
-                        d.join()
-                        e.join()
-                        f.join()
+                        runParallel(32, block) // 32 threads
                     }
                 }
 
@@ -53,28 +55,13 @@ fun measure(name: String, mode: Mode, block: () -> Unit): Pair<String, Long> {
                 runBlocking {
                     // running large tasks in parallel
 
-                    val repeat = 1_000_000 / DIVISOR
-                    fun runMe() {
+                    val repeat = 250_000 / DIVISOR
+                    fun runMeInThread() {
                         for (i in 1..repeat)
                             block()
                     }
 
-                    // using local variables to avoid creating
-                    // collections in benchmark code
-
-                    val a = launch { runMe() }
-                    val b = launch { runMe() }
-                    val c = launch { runMe() }
-                    val d = launch { runMe() }
-                    val e = launch { runMe() }
-                    val f = launch { runMe() }
-
-                    a.join()
-                    b.join()
-                    c.join()
-                    d.join()
-                    e.join()
-                    f.join()
+                    runParallel(32, ::runMeInThread) // 32 threads
                 }
 
             Mode.SINGLE_THREAD -> {
@@ -135,7 +122,7 @@ internal fun threadsafeGaussianBenchmark(mode: Mode): String {
     val results = mutableListOf<Pair<String, Long>>()
     fun Pair<String, Long>.addToResults() = results.add(this)
 
-    for (trial in 1..7) {
+    for (trial in 1..5) {
 
         println()
         println("-".repeat(80))
@@ -222,7 +209,7 @@ internal fun threadsafeGaussianBenchmark(mode: Mode): String {
 
     reportTextLines.addAll(
         results.groupBy { it.first }
-            .map { it.key to it.value.sumOf { it.second } }
+            .map { it.key to it.value.map {pair -> pair.second.toDouble() }.median().roundToInt() }
             .sortedBy { it.second }
             .map { "${it.second} ms ${it.first}" }
     )
@@ -233,7 +220,11 @@ internal fun threadsafeGaussianBenchmark(mode: Mode): String {
 }
 
 fun main(args: Array<String>) {
-    Mode.values().map(::threadsafeGaussianBenchmark).let {
+
+    //val modes = listOf(Mode.SINGLE_THREAD)
+    val modes = Mode.values()
+
+    modes.map(::threadsafeGaussianBenchmark).let {
         println("=".repeat(80))
         println("=".repeat(80))
         println()
