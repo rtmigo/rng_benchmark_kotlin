@@ -237,106 +237,106 @@ JVM 11.0.14 Kotlin 1.6.20
 642.60% [A1] java.util.Random: create for each call
 
 ================================================================================
-RESULTS SMALL_COROUTINES @ 2022-04-12T22:15:50.452538Z
+RESULTS SMALL_COROUTINES @ 2022-04-12T23:25:13.716032Z
 ================================================================================
 JVM 11.0.14 Kotlin 1.6.20
 
-100.00% [D1] ZigguratSampler ThreadLocalRandomSource MSWS
-100.19% [D1] ZigguratSampler ThreadLocalRandomSource PCG_XSH_RR_32_OS
-100.23% [D1] ZigguratSampler ThreadLocalRandomSource PCG_RXS_M_XS_64_OS
-100.32% [D1] ZigguratSampler ThreadLocalRandomSource SFC_64
-100.37% [D1] ZigguratSampler ThreadLocalRandomSource WELL_512_A
-100.37% [D1] ZigguratSampler ThreadLocalRandomSource MWC_256
-100.37% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_256_SS
-100.42% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_64_SS
-100.42% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_512_PLUS
-100.51% [D1] ZigguratSampler ThreadLocalRandomSource TWO_CMRES
-100.51% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_256_PP
-100.65% [D1] ZigguratSampler ThreadLocalRandomSource PCG_XSH_RR_32
-100.69% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_128_SS
-100.69% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_128_PLUS
-100.79% [D1] ZigguratSampler ThreadLocalRandomSource PCG_RXS_M_XS_64
-100.79% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_128_PP
-100.83% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_1024_S
-100.83% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_1024_SS
-100.88% [D1] ZigguratSampler ThreadLocalRandomSource PCG_MCG_XSH_RS_32
-100.93% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_64_S
-100.93% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_1024_PP
-101.06% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_256_PLUS
-101.11% [D1] ZigguratSampler ThreadLocalRandomSource PCG_XSH_RS_32_OS
-101.16% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_128_SS
-101.20% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_512_SS
-101.25% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_512_PP
-101.44% [D1] ZigguratSampler ThreadLocalRandomSource PCG_XSH_RS_32
-101.53% [D1] ZigguratSampler ThreadLocalRandomSource SFC_32
-101.67% [D1] ZigguratSampler ThreadLocalRandomSource XOR_SHIFT_1024_S_PHI
-101.67% [D1] ZigguratSampler ThreadLocalRandomSource PCG_MCG_XSH_RR_32
-101.71% [D1] ZigguratSampler ThreadLocalRandomSource MT_64
-101.81% [D1] ZigguratSampler ThreadLocalRandomSource MT
-101.85% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_128_PP
-101.94% [D1] ZigguratSampler ThreadLocalRandomSource XOR_SHIFT_1024_S
-102.04% [D1] ZigguratSampler ThreadLocalRandomSource JSF_32
-102.22% [D1] ZigguratSampler ThreadLocalRandomSource KISS
-102.41% [D1] ZigguratSampler ThreadLocalRandomSource JDK
-102.41% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_128_PLUS
-102.45% [D1] ZigguratSampler ThreadLocalRandomSource ISAAC
-102.55% [D1] ZigguratSampler ThreadLocalRandomSource WELL_19937_C
-103.15% [D1] ZigguratSampler ThreadLocalRandomSource JSF_64
-103.89% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_128_PLUS
-104.44% [D1] ZigguratSampler ThreadLocalRandomSource WELL_19937_A
-104.54% [D1] ZigguratSampler ThreadLocalRandomSource WELL_1024_A
-104.63% [D1] ZigguratSampler ThreadLocalRandomSource SPLIT_MIX_64
-104.68% [D2] boxMullerGaussian() ThreadLocalRandomSource SFC_64
-104.86% [D1] ZigguratSampler ThreadLocalRandomSource WELL_44497_B
-104.91% [D2] boxMullerGaussian() ThreadLocalRandomSource XOR_SHIFT_1024_S
-104.91% [D2] boxMullerGaussian() ThreadLocalRandomSource JSF_64
-105.32% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_128_PP
-105.32% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_256_PP
-105.46% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_256_PLUS
-105.46% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_512_PP
-105.74% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_128_SS
-105.88% [D2] boxMullerGaussian() ThreadLocalRandomSource SPLIT_MIX_64
-105.88% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_256_SS
-105.97% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_RXS_M_XS_64
-106.16% [C] kotlin.random.Random.boxMullerGaussian()
-106.16% [D2] boxMullerGaussian() ThreadLocalRandomSource TWO_CMRES
-106.20% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_XSH_RR_32
-106.25% [D2] boxMullerGaussian() ThreadLocalRandomSource XOR_SHIFT_1024_S_PHI
-106.39% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_1024_PP
-106.39% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_RXS_M_XS_64_OS
-106.44% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_1024_S
-106.57% [D2] boxMullerGaussian() ThreadLocalRandomSource SFC_32
-106.67% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_64_S
-106.71% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_1024_SS
-106.81% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_512_PLUS
-106.99% [D2] boxMullerGaussian() ThreadLocalRandomSource MT_64
-106.99% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_512_SS
-107.08% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_XSH_RR_32_OS
-107.13% [E] SynchronizedRandomGenerator MersenneTwister
-107.18% [D2] boxMullerGaussian() ThreadLocalRandomSource JSF_32
-107.36% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_64_SS
-107.69% [D2] boxMullerGaussian() ThreadLocalRandomSource MSWS
-107.82% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_128_PLUS
-108.06% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_XSH_RS_32_OS
-108.10% [E] SynchronizedRandomGenerator Well19937c
-108.15% [D1] ZigguratSampler ThreadLocalRandomSource WELL_44497_A
-108.24% [D2] boxMullerGaussian() ThreadLocalRandomSource MWC_256
-108.24% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_MCG_XSH_RR_32
-108.38% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_128_SS
-108.47% [A2] java.util.Random: synchronized reuse
-108.47% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_128_PP
-108.80% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_MCG_XSH_RS_32
-109.12% [B] ThreadLocalRandom.current().nextGaussian()
-109.54% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_XSH_RS_32
-109.72% [D2] boxMullerGaussian() ThreadLocalRandomSource MT
-110.09% [D2] boxMullerGaussian() ThreadLocalRandomSource KISS
-110.28% [D2] boxMullerGaussian() ThreadLocalRandomSource ISAAC
-112.64% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_512_A
-113.70% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_1024_A
-115.00% [D2] boxMullerGaussian() ThreadLocalRandomSource JDK
-115.88% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_19937_C
-116.06% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_44497_A
-116.44% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_44497_B
-116.90% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_19937_A
-121.85% [A1] java.util.Random: create for each call
+100.00% [D1] ZigguratSampler ThreadLocalRandomSource SFC_64
+100.03% [D1] ZigguratSampler ThreadLocalRandomSource MSWS
+100.09% [D1] ZigguratSampler ThreadLocalRandomSource XOR_SHIFT_1024_S
+100.12% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_512_SS
+100.55% [D1] ZigguratSampler ThreadLocalRandomSource PCG_RXS_M_XS_64
+100.55% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_1024_S
+100.61% [D1] ZigguratSampler ThreadLocalRandomSource XOR_SHIFT_1024_S_PHI
+100.61% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_256_PLUS
+100.61% [D1] ZigguratSampler ThreadLocalRandomSource PCG_MCG_XSH_RR_32
+100.61% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_1024_SS
+100.63% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_128_PLUS
+100.63% [D1] ZigguratSampler ThreadLocalRandomSource PCG_XSH_RR_32_OS
+100.66% [D1] ZigguratSampler ThreadLocalRandomSource PCG_XSH_RS_32_OS
+100.75% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_512_PLUS
+100.84% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_1024_PP
+100.92% [D1] ZigguratSampler ThreadLocalRandomSource JSF_64
+100.92% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_256_PP
+100.95% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_128_PLUS
+100.95% [D1] ZigguratSampler ThreadLocalRandomSource PCG_XSH_RS_32
+100.95% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_128_PP
+101.04% [D1] ZigguratSampler ThreadLocalRandomSource JSF_32
+101.04% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_512_PP
+101.07% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_64_S
+101.12% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_128_SS
+101.15% [D1] ZigguratSampler ThreadLocalRandomSource PCG_XSH_RR_32
+101.24% [B] ThreadLocalRandom.current().nextGaussian()
+101.24% [D1] ZigguratSampler ThreadLocalRandomSource PCG_RXS_M_XS_64_OS
+101.27% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_64_SS
+101.30% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_256_SS
+101.38% [D1] ZigguratSampler ThreadLocalRandomSource PCG_MCG_XSH_RS_32
+101.41% [D1] ZigguratSampler ThreadLocalRandomSource MT_64
+101.44% [D1] ZigguratSampler ThreadLocalRandomSource MT
+101.44% [D1] ZigguratSampler ThreadLocalRandomSource XO_RO_SHI_RO_128_SS
+101.67% [D1] ZigguratSampler ThreadLocalRandomSource WELL_512_A
+101.67% [D1] ZigguratSampler ThreadLocalRandomSource SFC_32
+101.73% [D1] ZigguratSampler ThreadLocalRandomSource KISS
+101.90% [D1] ZigguratSampler ThreadLocalRandomSource ISAAC
+101.90% [D1] ZigguratSampler ThreadLocalRandomSource XO_SHI_RO_128_PP
+102.11% [D1] ZigguratSampler ThreadLocalRandomSource TWO_CMRES
+102.28% [D2] boxMullerGaussian() ThreadLocalRandomSource SFC_64
+102.39% [D1] ZigguratSampler ThreadLocalRandomSource WELL_44497_B
+102.48% [D1] ZigguratSampler ThreadLocalRandomSource WELL_44497_A
+102.74% [D1] ZigguratSampler ThreadLocalRandomSource WELL_19937_C
+103.03% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_512_PP
+103.06% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_256_SS
+103.06% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_RXS_M_XS_64
+103.14% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_128_PP
+103.32% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_128_SS
+103.37% [D2] boxMullerGaussian() ThreadLocalRandomSource XOR_SHIFT_1024_S_PHI
+103.37% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_RXS_M_XS_64_OS
+103.40% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_1024_SS
+103.49% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_256_PP
+103.52% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_64_S
+103.52% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_256_PLUS
+103.55% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_128_PLUS
+103.66% [D2] boxMullerGaussian() ThreadLocalRandomSource TWO_CMRES
+103.66% [D2] boxMullerGaussian() ThreadLocalRandomSource MT_64
+103.69% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_512_SS
+103.75% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_MCG_XSH_RS_32
+103.78% [C] kotlin.random.Random.boxMullerGaussian()
+103.84% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_1024_PP
+103.87% [D2] boxMullerGaussian() ThreadLocalRandomSource XOR_SHIFT_1024_S
+103.92% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_512_PLUS
+103.98% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_1024_S
+103.98% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_XSH_RR_32_OS
+104.07% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_RO_SHI_RO_64_SS
+104.12% [D2] boxMullerGaussian() ThreadLocalRandomSource JSF_64
+104.15% [D2] boxMullerGaussian() ThreadLocalRandomSource MSWS
+104.24% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_MCG_XSH_RR_32
+104.30% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_128_SS
+104.59% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_XSH_RS_32_OS
+104.73% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_128_PLUS
+104.82% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_XSH_RR_32
+104.93% [D2] boxMullerGaussian() ThreadLocalRandomSource JSF_32
+104.96% [D2] boxMullerGaussian() ThreadLocalRandomSource MWC_256
+105.05% [D2] boxMullerGaussian() ThreadLocalRandomSource KISS
+105.11% [E] SynchronizedRandomGenerator MersenneTwister
+105.16% [D2] boxMullerGaussian() ThreadLocalRandomSource SPLIT_MIX_64
+105.36% [D2] boxMullerGaussian() ThreadLocalRandomSource SFC_32
+105.36% [D2] boxMullerGaussian() ThreadLocalRandomSource XO_SHI_RO_128_PP
+105.65% [D2] boxMullerGaussian() ThreadLocalRandomSource PCG_XSH_RS_32
+106.14% [D2] boxMullerGaussian() ThreadLocalRandomSource MT
+106.49% [E] SynchronizedRandomGenerator Well19937c
+106.89% [D2] boxMullerGaussian() ThreadLocalRandomSource ISAAC
+107.15% [A2] java.util.Random: synchronized reuse
+107.50% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_1024_A
+107.90% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_512_A
+109.55% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_19937_A
+110.12% [D2] boxMullerGaussian() ThreadLocalRandomSource JDK
+111.45% [D1] ZigguratSampler ThreadLocalRandomSource SPLIT_MIX_64
+112.09% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_19937_C
+112.29% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_44497_A
+112.84% [D2] boxMullerGaussian() ThreadLocalRandomSource WELL_44497_B
+119.67% [A1] java.util.Random: create for each call
+120.31% [D1] ZigguratSampler ThreadLocalRandomSource WELL_19937_A
+121.11% [D1] ZigguratSampler ThreadLocalRandomSource WELL_1024_A
+125.21% [D1] ZigguratSampler ThreadLocalRandomSource MWC_256
+126.16% [D1] ZigguratSampler ThreadLocalRandomSource JDK
 ```

@@ -48,7 +48,7 @@ fun measure(name: String, mode: Mode, block: () -> Unit): Pair<String, Long> {
                     // starting/stopping many small tasks in parallel
                     val repeat: Int = 10_000 / DIVISOR
                     for (i in 1..repeat) {
-                        runParallel(32, block) // 32 threads
+                        runParallel(64, block) // 64 threads
                     }
                 }
 
